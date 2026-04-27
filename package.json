@@ -1,0 +1,17 @@
+{
+  "name": "toxic-resume-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local frontend demo for a sharp resume optimizer and interview simulator.",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.80",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^2.4.5"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

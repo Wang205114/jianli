@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>简历毒打官</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+
+    <header class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">RESUME ROASTER</p>
+        <h1>简历毒打官</h1>
+        <p class="hero__text hero__text--headline">先帮你挑刺，再把句子改顺，最后给你一版更敢投的简历。</p>
+        <p class="hero__text hero__text--support">新建、诊断、优化、导出，都在同一个工作台里完成。</p>
+      </div>
+
+      <aside class="hero__feature-card">
+        <p class="hero__feature-eyebrow">现在就能直接做</p>
+        <div class="hero__feature-list">
+          <article class="hero__feature-item">
+            <span class="hero__feature-index">01</span>
+            <div>
+              <strong>生成单页简历</strong>
+              <p>左侧写内容，右侧看成稿，直接对齐 A4 单页排版。</p>
+            </div>
+          </article>
+
+          <article class="hero__feature-item">
+            <span class="hero__feature-index">02</span>
+            <div>
+              <strong>毒打已有 PDF</strong>
+              <p>上传现成简历后直接看问题、改写建议和整份重写草案。</p>
+            </div>
+          </article>
+
+          <article class="hero__feature-item">
+            <span class="hero__feature-index">03</span>
+            <div>
+              <strong>AI 优化整份内容</strong>
+              <p>先看修改建议，再决定是否应用，避免一键改坏原文事实。</p>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </header>
+
+    <main class="layout">
+      <section class="workspace-switcher">
+        <div class="workspace-switcher__copy">
+          <p class="workspace-switcher__eyebrow">选择功能</p>
+          <h2>先选你现在要做的事</h2>
+          <p>做一份新简历，或者把现成 PDF 拿来查问题，都从这里进。</p>
+        </div>
+
+        <div class="workspace-tabs" id="workspaceTabs">
+          <button type="button" class="workspace-tab is-active" data-panel="generatorPanel">
+            <span class="workspace-tab__kicker">01</span>
+            <span class="workspace-tab__title">生成简历</span>
+            <span class="workspace-tab__text">左侧写内容，右侧实时看成稿，改完就能直接导出。</span>
+          </button>
+
+          <button type="button" class="workspace-tab" data-panel="reviewPanel">
+            <span class="workspace-tab__kicker">02</span>
+            <span class="workspace-tab__title">简历 PDF 诊断</span>
+            <span class="workspace-tab__text">上传已有简历，快速看问题、改写建议和整份重写草案。</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="workspace-panel" id="generatorPanel">
+        <section class="card input-card">
+          <div class="section-head section-head--compact section-head--workspace">
+            <div>
+              <h2>生成简历</h2>
+              <p class="section-subhead">左侧写内容，右侧实时预览，改完就能直接导出。</p>
+            </div>
+          </div>
+
+          <div class="generator-toolbar">
+            <div class="generator-toolbar__row">
+              <div class="template-picker-bar">
+                <div class="template-picker-bar__meta">
+                  <p class="template-picker-bar__label">当前模板</p>
+                  <p id="templateNameValue" class="template-picker-bar__value">模板1青蓝</p>
+                  <p id="autosaveStatus" class="hint">自动保存开启</p>
+                </div>
+                <span class="section-head__badge">单页 A4</span>
+              </div>
+
+              <div class="generator-display-controls">
+                <label class="field">
+                  <span>模板颜色</span>
+                  <select id="themeColorSelect">
+                    <option value="template">跟随模板</option>
+                    <option value="#36bed8">青蓝色</option>
+                    <option value="#2c4a67">深海蓝</option>
+                    <option value="#5b7f5a">松绿色</option>
+                    <option value="#8c5a46">暖棕色</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>字体大小</span>
+                  <select id="fontScaleSelect">
+                    <option value="0.94">紧凑</option>
+                    <option value="1" selected>标准</option>
+                    <option value="1.06">舒展</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="quick-fill quick-fill--toolbar">
+                <button type="button" class="ghost-button" id="fillGeneratorSample">填充示例信息</button>
+                <button type="button" class="primary-button" id="exportPdfButton">导出 PDF</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="generator-shell">
+            <aside class="generator-sidebar">
+              <section class="resume-editor">
+                <details class="editor-block" open>
+                  <summary class="editor-block__summary">
+                    <div>
+                      <strong>基本信息</strong>
+                      <span>联系方式、学校信息和照片都在这里统一填写。</span>
+                    </div>
+                  </summary>
+                  <div class="editor-block__body">
+                    <div class="editor-grid">
+                      <label class="field">
+                        <span>姓名</span>
+                        <input id="profileNameInput" type="text" placeholder="例如：张三" />
+                      </label>
+                      <label class="field">
+                        <span>目标岗位</span>
+                        <input id="profileTargetRoleInput" type="text" placeholder="例如：用户增长运营 / Java 开发工程师" />
+                      </label>
+                    </div>
+
+                    <div class="editor-grid">
+                      <label class="field">
+                        <span>性别</span>
+                        <input id="profileGenderInput" type="text" placeholder="例如：男 / 女" />
+                      </label>
+                      <label class="field">
+                        <span>所在城市</span>
+                        <input id="profileCityInput" type="text" placeholder="例如：上海" />
+                      </label>
+                    </div>
+
+                    <div class="editor-grid">
+                      <label class="field">
+                        <span>联系电话</span>
+                        <input id="profilePhoneInput" type="text" placeholder="例如：13800000000" />
+                      </label>
+                      <label class="field">
+                        <span>邮箱</span>
+                        <input id="profileEmailInput" type="text" placeholder="例如：name@email.com" />
+                      </label>
+                    </div>
+
+                    <div class="editor-grid">
+                      <label class="field">
+                        <span>学校</span>
+                        <input id="profileSchoolInput" type="text" placeholder="例如：复旦大学" />
+                      </label>
+                      <label class="field">
+                        <span>专业</span>
+                        <input id="profileMajorInput" type="text" placeholder="例如：市场营销 / 计算机科学与技术" />
+                      </label>
+                    </div>
+
+                    <div class="editor-grid">
+                      <label class="field">
+                        <span>学历</span>
+                        <input id="profileDegreeInput" type="text" placeholder="例如：本科 / 硕士" />
+                      </label>
+                      <label class="field">
+                        <span>照片</span>
+                        <input id="profilePhotoInput" type="file" accept="image/*" />
+                      </label>
+                    </div>
+
+                    <div class="photo-field">
+                      <span>头像预览</span>
+                      <div class="photo-preview-wrap">
+                        <img id="profilePhotoPreview" class="photo-preview hidden" alt="用户照片预览" />
+                        <p id="photoEmptyHint" class="photo-empty-hint">上传照片后会自动同步到右侧模板。</p>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </section>
+
+              <section class="structured-panel">
+                <div class="module-rail__head">
+                  <div>
+                    <h3>模块编辑</h3>
+                  </div>
+                  <span class="section-head__badge">可排序</span>
+                </div>
+
+                <p class="builder-hint builder-hint--compact">
+                  学校、专业、学历在基本信息中维护；教育背景按需添加。
+                </p>
+
+                <div class="section-toolbar" id="sectionToolbar"></div>
+                <div class="structured-editor" id="structuredEditor"></div>
+              </section>
+            </aside>
+
+            <section class="resume-preview-shell resume-preview-shell--right">
+              <div class="preview-shell__head preview-shell__head--compact">
+                <h3>简历 PDF 预览</h3>
+              </div>
+
+              <div class="resume-preview-stage" id="resumePreviewStage">
+                <div class="resume-preview-viewport" id="resumePreviewViewport">
+                  <article id="resumePreview" class="resume-preview" spellcheck="false"></article>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </section>
+
+      <section class="workspace-panel hidden" id="reviewPanel">
+        <div class="review-workbench">
+          <div class="review-top-grid">
+            <section class="card input-card review-input-card">
+              <div class="section-head section-head--compact">
+                <div>
+                  <h2>简历 PDF 诊断</h2>
+                  <p class="section-subhead">上传简历后直接查看诊断、改写和重写草案。</p>
+                </div>
+              </div>
+
+              <div class="upload-box upload-box--review">
+                <label for="resumeFile" class="upload-box__label">上传 PDF 简历</label>
+                <input id="resumeFile" type="file" accept=".pdf" />
+                <p id="fileHint" class="hint">建议上传可复制文字的 PDF。</p>
+              </div>
+
+              <div class="quick-fill">
+                <button type="button" class="ghost-button" id="fillReviewJdButton">填入示例岗位要求</button>
+              </div>
+
+              <div class="review-textareas">
+                <label class="field">
+                  <span>目标岗位要求（可选）</span>
+                  <textarea id="reviewJdInput" class="review-textarea review-textarea--short" placeholder="把你想投的岗位要求粘贴到这里。不填也能分析；填了以后，诊断和改写会更贴近岗位。"></textarea>
+                </label>
+              </div>
+
+              <div class="cta-row">
+                <button type="button" class="primary-button" id="analyzePdfButton">开始分析</button>
+                <p class="hint" id="reviewStatusText">上传 PDF 后，这里会返回诊断、逐条改写和整份重写结果。</p>
+              </div>
+            </section>
+
+            <section class="card input-card review-ai-card">
+              <div class="section-head section-head--compact">
+                <div>
+                  <h2>AI 优化简历</h2>
+                  <p class="section-subhead">直接优化当前简历内容，确认后再应用。</p>
+                </div>
+                <span class="section-head__badge" id="activeSectionHint">当前模块：未选择</span>
+              </div>
+
+              <div class="ai-workbench__panel review-ai-panel">
+                <div class="ai-workbench__cta">
+                  <button type="button" class="primary-button primary-button--xl" id="optimizeProfileButton">AI 一键优化整份简历</button>
+                  <p class="builder-hint builder-hint--compact">先看改动，再决定是否应用。</p>
+                </div>
+
+                <div class="ai-workbench__row">
+                  <button type="button" class="ghost-button" id="optimizeCurrentSectionButton">优化当前模块</button>
+                  <button type="button" class="ghost-button" id="compressToOnePageButton">AI 压缩到一页</button>
+                </div>
+
+                <div class="ai-workbench__compare" id="aiCompareBox">
+                  <p class="module-form__label">最近一次优化建议</p>
+                  <strong id="aiCompareTitle">还没开始优化</strong>
+                  <p id="aiCompareText" class="builder-hint">先选当前模块或整份简历，再决定是否应用这次改动。</p>
+
+                  <div class="ai-diff-actions">
+                    <button type="button" class="primary-button" id="applyAiDiffButton">应用本次优化</button>
+                    <button type="button" class="ghost-button" id="resetGeneratorButton">恢复原版</button>
+                  </div>
+
+                  <div class="ai-diff-list" id="aiDiffList"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <section class="card result-card review-result-card">
+            <div class="section-head section-head--compact">
+              <div>
+                <h2>诊断与重写报告</h2>
+              </div>
+            </div>
+
+            <div id="emptyOptimization" class="empty-state">
+              <p class="empty-state__title">先把 PDF 简历上传上来，我会给出诊断与重写建议。</p>
+              <p class="empty-state__text">会先看到整体判断，再给你逐条改写和整份重写草案。</p>
+            </div>
+
+            <div id="optimizationContent" class="hidden">
+              <section class="optimization-hero">
+                <div class="optimization-score">
+                  <span class="optimization-score__label">整体评分</span>
+                  <strong id="overallScoreValue">0</strong>
+                </div>
+                <div class="optimization-summary">
+                  <p class="optimization-summary__label">一句专业总评</p>
+                  <p class="optimization-summary__text" id="oneLineRoastText"></p>
+                </div>
+              </section>
+
+              <section class="optimization-section">
+                <div class="optimization-section__head">
+                  <p class="rewrite-grid__label">优先优化建议</p>
+                  <span class="section-head__badge">可直接复制到简历文案</span>
+                </div>
+                <div class="rewrite-compare-list" id="rewriteCompareList"></div>
+              </section>
+
+              <section class="optimization-meta-grid">
+                <article class="optimization-meta-card">
+                  <p class="rewrite-grid__label">岗位匹配亮点</p>
+                  <div class="keyword-tags" id="strengthHighlightsList"></div>
+                </article>
+
+                <article class="optimization-meta-card">
+                  <p class="rewrite-grid__label">缺失关键词</p>
+                  <div class="keyword-tags" id="missingKeywordsList"></div>
+                </article>
+
+                <article class="optimization-meta-card">
+                  <p class="rewrite-grid__label">高风险提醒</p>
+                  <ul class="risk-flag-list" id="riskFlagsList"></ul>
+                </article>
+              </section>
+
+              <section class="optimization-section">
+                <div class="optimization-section__head">
+                  <p class="rewrite-grid__label">模拟提问</p>
+                  <span class="section-head__badge">更贴近真实面试追问</span>
+                </div>
+                <ul class="interview-list" id="interviewQuestionList"></ul>
+              </section>
+
+              <section class="optimization-section rewrite-resume-section">
+                <div class="optimization-section__head">
+                  <p class="rewrite-grid__label">整份重写草案</p>
+                  <span class="section-head__badge">基于原始事实重写</span>
+                </div>
+                <div class="rewrite-resume-summary" id="rewriteResumeSummary"></div>
+                <div class="rewrite-resume-list" id="rewriteResumeModules"></div>
+              </section>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
